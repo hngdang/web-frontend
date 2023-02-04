@@ -1,0 +1,45 @@
+<nav class="navbar navbar-default bg-body-tertiary">
+  <div class="container justify-content-center">
+    <a class="navbar-brand" href="#">
+      it<span class="text-primary">K22</span>
+    </a>
+  </div>
+</nav>
+<main class="pt-5">
+  <h3 class="d-flex justify-content-center">Đăng nhập</h3>
+  <div class="row">
+    <div class="col-6 m-auto">
+      <div>
+        <form>
+          <div class="mb-3">
+            <label for="exampleInputEmail1" class="form-label">Email</label>
+            <input
+              type="email"
+              class="form-control"
+              id="exampleInputEmail1"
+              aria-describedby="emailHelp"
+              placeholder="example@gmail.com"
+            />
+          </div>
+          <div class="mb-3">
+            <label for="exampleInputPassword1" class="form-label"
+              >Mật khẩu</label
+            >
+            <input
+              type="password"
+              class="form-control"
+              id="exampleInputPassword1"
+              placeholder="********"
+            />
+          </div>
+          <div class="mb-3">
+            Bạn chưa có tài khoản? <a routerLink="/owner/dang-ky">Đăng ký</a>
+            <br />
+            <a routerLink="/owner/quen-mat-khau">Quên mật khẩu</a>
+          </div>
+          <button type="submit" class="btn btn-primary">Đăng nhập</button>
+        </form>
+      </div>
+    </div>
+  </div>
+</main>
