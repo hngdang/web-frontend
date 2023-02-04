@@ -33,6 +33,8 @@ import { AStudentComponent } from './admin/a-student/a-student.component';
 import { AContactComponent } from './admin/a-contact/a-contact.component';
 import { OResetPasswordComponent } from './owner/o-reset-password/o-reset-password.component';
 import { ODetailComponent } from './owner/o-detail/o-detail.component';
+import { HttpClientModule } from '@angular/common/http';
+import { FormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -68,11 +70,8 @@ import { ODetailComponent } from './owner/o-detail/o-detail.component';
     OResetPasswordComponent,
     ODetailComponent,
   ],
-  imports: [
-    BrowserModule,
-    AppRoutingModule
-  ],
+  imports: [BrowserModule, AppRoutingModule, HttpClientModule, FormsModule],
   providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
 })
-export class AppModule { }
+export class AppModule {}
