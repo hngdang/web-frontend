@@ -22,31 +22,35 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 
 const routes: Routes = [
-  {path : '' , component : HomeComponent},
-  {path : 'tim-thue' , component : PropertyComponent},
-  {path : 've-chung-toi' , component : AboutUsComponent},
-  {path : 'lien-he' , component : ContactComponent},
-  {path : 'chi-tiet' , component : DetailComponent},
-  {path : 'dang-nhap' , component : LoginComponent},
-  {path : 'doi-mat-khau' , component : ChangePasswordComponent},
-  {path : 'thong-tin-ca-nhan' , component : InformationComponent},
-  {path : 'danh-sach-yeu-thich' , component : StorageComponent},
-  {path : 'owner' , component : OHomeComponent},
-  {path : 'owner/quan-ly-tin' , component : OManagementComponent},
-  {path : 'owner/dang-tin' , component : OPropertyComponent},
-  {path : 'owner/tin-nhan' , component : OMessageComponent},
-  {path : 'owner/thong-tin-ca-nhan' , component : OInformationComponent},
-  {path : 'owner/dang-nhap' , component : OLoginComponent},
-  {path : 'owner/dang-ky' , component : ORegisterComponent},
-  {path : 'owner/dang-tin' , component : OPropertyComponent},
-  {path : 'owner/chi-tiet' , component : ODetailComponent},
-  {path : 'owner/doi-mat-khau' , component : OChangePasswordComponent},
-  {path : 'owner/quen-mat-khau' , component : OForgetPasswordComponent},
-  {path : 'owner/khoi-phuc-mat-khau' , component : OResetPasswordComponent},
+  { path: '', component: HomeComponent },
+  { path: 'tim-thue', component: PropertyComponent },
+  { path: 've-chung-toi', component: AboutUsComponent },
+  { path: 'lien-he', component: ContactComponent },
+  {
+    path: 'tim-thue/:id/chi-tiet',
+    component: DetailComponent,
+    pathMatch: 'full',
+  },
+  { path: 'dang-nhap', component: LoginComponent },
+  { path: 'doi-mat-khau', component: ChangePasswordComponent },
+  { path: 'thong-tin-ca-nhan', component: InformationComponent },
+  { path: 'danh-sach-yeu-thich', component: StorageComponent },
+  { path: 'owner', component: OHomeComponent },
+  { path: 'owner/quan-ly-tin', component: OManagementComponent },
+  { path: 'owner/dang-tin', component: OPropertyComponent },
+  { path: 'owner/tin-nhan', component: OMessageComponent },
+  { path: 'owner/thong-tin-ca-nhan', component: OInformationComponent },
+  { path: 'owner/dang-nhap', component: OLoginComponent },
+  { path: 'owner/dang-ky', component: ORegisterComponent },
+  { path: 'owner/dang-tin', component: OPropertyComponent },
+  { path: 'owner/chi-tiet', component: ODetailComponent },
+  { path: 'owner/doi-mat-khau', component: OChangePasswordComponent },
+  { path: 'owner/quen-mat-khau', component: OForgetPasswordComponent },
+  { path: 'owner/khoi-phuc-mat-khau', component: OResetPasswordComponent },
 ];
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
-  exports: [RouterModule]
+  exports: [RouterModule],
 })
-export class AppRoutingModule { }
+export class AppRoutingModule {}
