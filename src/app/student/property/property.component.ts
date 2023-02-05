@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { convertAmount } from '../../helper/amout';
+import { PreviousRouteService } from '../../helper/previous-route.service';
 import {
   ProductService,
   Property,
@@ -40,7 +41,8 @@ export class PropertyComponent implements OnInit {
   constructor(
     private productService: ProductService,
     private route: ActivatedRoute,
-    private router: Router
+    private router: Router,
+    private previousRouteService: PreviousRouteService
   ) {
     this.propertiesDis = [];
     this.resultsTotalCount = 0;
@@ -51,6 +53,8 @@ export class PropertyComponent implements OnInit {
       typeId: null,
       title: null,
       address: null,
+      districtCode: null,
+      wardCode: null,
       createDatetimeFrom: null,
       createDatetimeTo: null,
       amountFrom: null,
@@ -66,6 +70,10 @@ export class PropertyComponent implements OnInit {
     this.searchRequest.offset = 1;
     this.searchRequest.limit = 8;
     this.refreshProperty(this.searchRequest);
+
+    this.route.data.subscribe((data) => {
+      console.log(data);
+    });
   }
 
   refreshProperty(searchRequest: SearchRequest) {

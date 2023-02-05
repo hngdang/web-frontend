@@ -42,7 +42,7 @@
               <h2 class="title-a">Mới nhất</h2>
             </div>
             <div class="title-link">
-              <a href="">Tất cả</a>
+              <a [routerLink]="['/tim-thue']">Tất cả</a>
               <span class="bi bi-chevron-right"></span>
             </div>
           </div>
@@ -51,79 +51,37 @@
     </div>
     <div class="container">
       <div class="row">
-        <div class="col-md-3 col-6 mb-3">
-          <div class="card">
-            <div class="card-body">
-              <img src="assets/img/property-1.jpg" alt="" class="img-fluid" />
-              <div>
-                <h5 class="text-truncate">
-                  164, Tân Mỹ, Tân Thuận Tây, Q7, TP.HCM
-                </h5>
-              </div>
-              <div>
-                <div class="d-flex">
-                  <span>3 triệu</span>
+        <ng-container *ngFor="let item of propertiesDis">
+          <div
+            [routerLink]="['/tim-thue', item.propertyId, 'chi-tiet']"
+            class="col-md-3 col-6 mb-3"
+          >
+            <div class="card">
+              <div class="card-body">
+                <img
+                  src="{{ item.propertyImg[0] }}"
+                  alt=""
+                  class="img-fluid img-thumbnail"
+                />
+                <div>
+                  <h6 class="text-truncate">
+                    {{ item.address }}
+                  </h6>
+                </div>
+                <div>
+                  <div class="d-flex">
+                    <span>{{ item.amount }}</span>
+                  </div>
                 </div>
               </div>
             </div>
           </div>
-        </div>
-        <div class="col-md-3 col-6 mb-3">
-          <div class="card">
-            <div class="card-body">
-              <img src="assets/img/property-2.jpg" alt="" class="img-fluid" />
-              <div>
-                <h5 class="text-truncate">
-                  164, Tân Mỹ, Tân Thuận Tây, Q7, TP.HCM
-                </h5>
-              </div>
-              <div>
-                <div class="d-flex">
-                  <span>3 triệu</span>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div class="col-md-3 col-6 mb-3">
-          <div class="card">
-            <div class="card-body">
-              <img src="assets/img/property-3.jpg" alt="" class="img-fluid" />
-              <div>
-                <h5 class="text-truncate">
-                  164, Tân Mỹ, Tân Thuận Tây, Q7, TP.HCM
-                </h5>
-              </div>
-              <div>
-                <div class="d-flex">
-                  <span>3 triệu</span>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div class="col-md-3 col-6 mb-3">
-          <div class="card">
-            <div class="card-body">
-              <img src="assets/img/property-4.jpg" alt="" class="img-fluid" />
-              <div>
-                <h5 class="text-truncate">
-                  164, Tân Mỹ, Tân Thuận Tây, Q7, TP.HCM
-                </h5>
-              </div>
-              <div>
-                <div class="d-flex">
-                  <span>3 triệu</span>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
+        </ng-container>
       </div>
     </div>
   </section>
 
-  <section class="section-t4">
+  <section *ngIf="false" class="section-t4">
     <div class="container">
       <div class="row">
         <div class="col-md-12">

@@ -45,6 +45,8 @@ export interface SearchRequest {
   typeId: string | null;
   title: string | null;
   address: string | null;
+  districtCode: string | null;
+  wardCode: string | null;
   createDatetimeFrom: string | null;
   createDatetimeTo: string | null;
   amountFrom: string | null;
@@ -55,19 +57,38 @@ export interface SearchRequest {
   limit: number | null;
 }
 
+export interface AllPropertyTypeResponse {
+  status: number;
+  results: AllPropertyTypeResponseResults;
+}
+
+export interface AllPropertyTypeResponseResults {
+  resultsTotalCount: number;
+  typeProperties: PropertyTypeResponse[];
+}
+
+export interface PropertyTypeResponse {
+  typeId: string;
+  typeName: string;
+  totalProperty: number;
+}
 @Injectable({
   providedIn: 'root',
 })
 export class ProductService {
-  apiUrl: string = 'http://localhost:8080/v1/';
-  searchEndPoint: string = 'searchProperty';
-  getByIdEndPoint: string = 'getProperty';
+  private apiUrl: string = 'http://localhost:8080/v1/';
+  private searchEndPoint: string = 'searchProperty';
+  private getByIdEndPoint: string = 'getProperty';
+  private getTypeEndPoint: string = 'getAllPropertyType';
 
   constructor(private httpClient: HttpClient) {}
 
   getAll(searchRequest: SearchRequest): Observable<PropertyResponse> {
-    const headers = { 'content-type': 'application/json' };
     const body = JSON.stringify(searchRequest);
+    const headers = new HttpHeaders().append(
+      'content-type',
+      'application/json'
+    );
     return this.httpClient.post<PropertyResponse>(
       this.apiUrl + this.searchEndPoint,
       body,
@@ -76,17 +97,28 @@ export class ProductService {
   }
 
   getDetails(id: number): Observable<PropertyGetResponse> {
+    const queryParams = new HttpParams().append('propertyId', id);
     const headers = new HttpHeaders().append(
       'content-type',
       'application/json'
     );
-
-    const queryParams = new HttpParams().append('propertyId', id);
-
     return this.httpClient.get<PropertyGetResponse>(
       this.apiUrl + this.getByIdEndPoint,
       {
         params: queryParams,
+        headers: headers,
+      }
+    );
+  }
+
+  getAllPropertyType(): Observable<AllPropertyTypeResponse> {
+    const headers = new HttpHeaders().append(
+      'content-type',
+      'application/json'
+    );
+    return this.httpClient.get<AllPropertyTypeResponse>(
+      this.apiUrl + this.getTypeEndPoint,
+      {
         headers: headers,
       }
     );
